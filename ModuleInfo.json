@@ -2,6 +2,7 @@
   "Name": "Topmaniac in SMG2",
   "Author": "Super Hackio",
   "Description": "He's here for his revenge...",
+  "SupportedGames": [ "SB4" ],
 
   "ModuleData": [
     {
