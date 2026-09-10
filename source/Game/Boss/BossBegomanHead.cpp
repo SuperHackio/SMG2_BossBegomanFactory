@@ -11,12 +11,7 @@ BossBegomanHead::BossBegomanHead(LiveActor* pParent, MtxPtr mtx) : PartsModel(pP
 void BossBegomanHead::init(const JMapInfoIter& rIter) {
     initNerve(&NrvBossBegomanHead::HostTypeNrvDemoWait::sInstance, 0);
 
-    JointControlDelegator<BossBegomanHead>* jointCtrl = new JointControlDelegator<BossBegomanHead>();
-    jointCtrl->mObjPtr = this;
-    jointCtrl->mCalcJointMtxFunc = &BossBegomanHead::calcJointEdge;
-    jointCtrl->mCalcJointMtxAfterChildFunc = NULL;
-    MR::setJointControllerParam(jointCtrl, this, "Edge");
-    mJointDeleg = jointCtrl;
+    mJointDeleg = MR::createJointDelegatorWithNullChildFunc(this, &BossBegomanHead::calcJointEdge, "Edge");
 
     PartsModel::init(rIter);
     MR::initLightCtrl(this);
